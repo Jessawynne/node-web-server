@@ -1,0 +1,25 @@
+{
+  "name": "node-web-server",
+  "version": "1.0.0",
+  "description": "## Node.js Exercise from Nashville Software School",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jessawynne/node-web-server.git"
+  },
+  "keywords": [],
+  "author": "Jessawynne Parker <jessawynne@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jessawynne/node-web-server/issues"
+  },
+  "homepage": "https://github.com/Jessawynne/node-web-server#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
