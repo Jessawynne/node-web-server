@@ -29,7 +29,8 @@ app.get('/random', (req, res) => {
 });
 
 //all = any verbs, * = everything
-app.all('*', (req, res) => {
+//order does matter with routes
+app.get('/secret', (req, res) => {
   res
     .status(403)
     .send('Access Denied!');
