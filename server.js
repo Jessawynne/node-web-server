@@ -4,8 +4,13 @@ const app = require('express')();
 const PORT = process.env.PORT || 3000;
 
 app.get('/hello', (req, res) => {
-  const msg = `<h1>HELLO WORLD!</h1>
-               <h2>GOODBYE WORLD!</h2>`;
+
+  const name = req.query.name;
+
+  const msg = `<h1>HELLO ${name}!</h1>
+               <h2>GOODBYE ${name}!</h2>`;
+
+  console.log('PARAMS', req.query);
 
   res.writeHead(200, {
     'Content-Type': 'text/html'
