@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Jessawynne/node-web-server#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "jade": "^1.11.0"
   }
 }
