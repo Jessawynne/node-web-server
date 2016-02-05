@@ -1,24 +1,46 @@
 'use strict';
 
 const app = require('express')();
+const bodyParser = require('body-parser');
+const upload = require('multer')({ dest: 'tmp/uploads' });
+
 const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'jade');
 
+app.locals.title = 'Basic Node.js Web Server App';
+
+//allows you to parse forms
+app.use(bodyParser.urlencoded({extended: false}));
+
 //default directory
 app.get('/', (req, res) => {
-  setTimeout(() => {
-    res.render('index', {
-      title: 'Node.js Web Server App',
-      date: new Date()
-    });
-  }, 20000);
+  res.render('index', {
+    date: new Date;
+  });
 });
 
+app.get('/contact', (req, res) => {
+  res.render('contact');
+});
+
+app.post('/contact', (req, res) => {
+  const name = req.body.name;
+
+  res.send(`<h1>Thanks for contacting us ${name}</h1>`);
+});
+
+app.get('/sendphoto', (req, res) => {
+  res.render('sendphoto');
+});
+
+app.post('/sendphoto', upload.single('image'), (req, res) => {
+  res.send('<h1>Thanks for sending us your photo</h1>');
+});
+
+
 app.get('/hello', (req, res) => {
-
   const name = req.query.name;
-
   const msg = `<h1>HELLO ${name}!</h1>
                <h2>GOODBYE ${name}!</h2>`;
 
@@ -55,15 +77,6 @@ app.get('/random/:min/:max', (req, res) => {
 
   res.send(getRandomInt(+min, +max).toString());
 });
-
-app.get('/cal', (req, res) => {
-  const zellers = require('node-cal/lib/zellers');
-  const month = require('node-cal/lib/month');
-  const year = require('node-cal/lib/year');
-});
-
-// localhost:3000/cal/2/2015
-// localhost:3000/cal?month=2&year=2015
 
 //all = any verbs, * = everything
 //order does matter with routes
